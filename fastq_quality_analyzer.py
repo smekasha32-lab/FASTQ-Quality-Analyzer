@@ -6,13 +6,13 @@ def calculate_average_quality(quality_string):
     average_quality_score = total_quality_score / len(quality_string)
     return average_quality_score 
 
-def read_fastq_file():
-    file = open("sample.fastq", "r")
+def read_fastq_file(input_filename, output_filename):
+    file = open(input_filename, "r")
     total_reads = 0
     total_bases = 0
     passed_reads = 0
     failed_reads = 0
-    output_file = open("filtered.fastq", "w")
+    output_file = open(output_filename, "w")
 
     read_id = file.readline().strip()
     
@@ -46,4 +46,22 @@ def read_fastq_file():
         print("No reads found in the FASTQ file.")
     file.close()
     output_file.close()
-read_fastq_file()
+    
+    return {
+    "total_reads": total_reads,
+    "total_bases": total_bases,
+    "passed_reads": passed_reads,
+    "failed_reads": failed_reads,
+    "average_read_length": average_read_length
+    }
+stats = read_fastq_file("sample.fastq", "filtered.fastq")
+
+pass_rate = (
+    stats["passed_reads"] / stats["total_reads"]
+) * 100
+print("Pass Rate:", pass_rate, "%")
+
+if stats["failed_reads"] > 100:
+    print("Warning: Many reads failed quality control.")
+
+

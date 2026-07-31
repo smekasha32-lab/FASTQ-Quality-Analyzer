@@ -7,7 +7,7 @@ The FASTQ Quality Analyzer is a Python-based bioinformatics tool that processes 
 
 ## Features
 
-- Read FASTQ files
+- Read FASTQ input files
 
 - Parse sequencing records
 
@@ -26,6 +26,10 @@ The FASTQ Quality Analyzer is a Python-based bioinformatics tool that processes 
 - Count passed and failed reads
 
 - Generate a filtered FASTQ file containing only high-quality reads
+
+- Generate a dictionary of the ouput quality control data for further use
+
+- Calculate pass rate for reads in the input file
 
 ---
 
@@ -97,6 +101,8 @@ Failed: 1
 
 Average Read Length: 8
 
+Pass Rate: 50.0 %
+
 ```
 
 ---
@@ -140,5 +146,7 @@ bioinformatics-fastq-quality-analyzer/
 - Bioinformatics preprocessing
 
 - Data filtering
+
+- Dictionary formation
 
 ---
